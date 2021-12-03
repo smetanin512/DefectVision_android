@@ -1,0 +1,3 @@
+rootProject.name = "hakatonApplication"
+include ':app'
+include ':rtsp-client'

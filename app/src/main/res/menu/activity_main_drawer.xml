@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="Поток с камеры"
+            android:icon="@drawable/ic_cctv_black_24dp" />
+        <item
+            android:id="@+id/nav_notification"
+            android:title="Уведомления"
+            android:icon="@drawable/outline_notifications_black_24dp"/>
+</menu>

@@ -23,8 +23,10 @@ class HomeViewModel : ViewModel() {
         private const val DEBUG = true
     }
 
+    val count:MutableLiveData<Int> = MutableLiveData(0)
+
     val rtspRequest1 = MutableLiveData<String>().apply {
-        value = "tcp://94.26.229.85:5001"
+        value = "rtsp://94.26.229.85:8554/mystream"
     }
     val rtspUsername1 = MutableLiveData<String>().apply {
         value = ""
@@ -64,7 +66,7 @@ class HomeViewModel : ViewModel() {
     }
 
     init {
-        rtspRequest1.value = "tcp://94.26.229.85:5001"
+        rtspRequest1.value = "rtsp://94.26.229.85:8554/mystream"
         rtspRequest2.value = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov"
         rtspRequest3.value = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov"
         rtspRequest4.value = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov"
@@ -74,7 +76,7 @@ class HomeViewModel : ViewModel() {
     fun loadParams1(context: Context?) {
         val pref = context?.getSharedPreferences(LIVE_PARAMS_FILENAME1, Context.MODE_PRIVATE)
         try {
-            rtspRequest1.setValue(pref?.getString(RTSP_REQUEST_KEY, "tcp://94.26.229.85:5001"))
+            rtspRequest1.setValue(pref?.getString(RTSP_REQUEST_KEY, "rtsp://94.26.229.85:8554/mystream"))
         } catch (e: ClassCastException) {
             e.printStackTrace()
         }

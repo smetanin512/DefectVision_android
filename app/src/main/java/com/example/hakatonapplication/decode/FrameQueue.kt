@@ -1,4 +1,4 @@
-package com.alexvas.rtsp.demo.decode
+package com.example.hakatonapplication.decode
 
 import android.annotation.SuppressLint
 import android.util.Log

@@ -2,7 +2,7 @@ package com.example.hakatonapplication.socket
 
 import com.google.gson.Gson
 
-abstract class BaseSocket( val gson: Gson) {
+abstract class BaseSocket {
     var listener: SocketCallback? = null
 
     abstract fun setupSocket()
@@ -22,13 +22,6 @@ interface SocketCallback {
     fun connected()
 
     fun receivedMessage(responseMessage: ResponseMessage)
-}
-
-enum class SocketType {
-
-    WEB_SOCKET,
-
-    IO;
 }
 
 object SocketFactory {

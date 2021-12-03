@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.HakatonApplication" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#E90000</item>
-        <item name="colorPrimaryVariant">#E90000</item>
+        <item name="colorPrimary">#9D763D</item>
+        <item name="colorPrimaryVariant">#9D763D</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -16,7 +16,11 @@
 
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="colorPrimaryDark">#E90000</item>
+        <item name="colorPrimaryDark">#20272F</item>
+    </style>
+
+    <style name="LoginTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimaryDark">#FFFFFF</item>
     </style>
 
     <style name="Theme.HakatonApplication.NoActionBar">
@@ -24,7 +28,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.HakatonApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HakatonApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="color">#15212F</item>
+    </style>
 
     <style name="Theme.HakatonApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

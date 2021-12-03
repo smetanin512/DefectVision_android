@@ -10,8 +10,6 @@ import android.view.SurfaceView
 import android.view.View
 import android.widget.Button
 import com.alexvas.rtsp.RtspClient
-import com.alexvas.rtsp.demo.decode.FrameQueue
-import com.alexvas.rtsp.demo.decode.VideoDecodeThread
 import com.alexvas.utils.NetUtils
 import com.alexvas.utils.VideoCodecUtils
 import java.net.Socket
@@ -26,10 +24,7 @@ class Rtsp(
     _rtspPassword: String?,
     _rtspUsername: String?,
     _rtspRequest: String?,
-//    _rtspThread: Rtsp.RtspThread? = null,
-//    _rtspStopped: AtomicBoolean = AtomicBoolean(true),
     _btnStartStop: Button? = null,
-//    _surface: Surface? = null,
     _surfaceView: SurfaceView,
 
     _progressBar: View? = null
@@ -119,7 +114,7 @@ class Rtsp(
                         if (sdpInfo.videoTrack != null)
                             s = "video"
                         if (sdpInfo.audioTrack != null) {
-                            if (s.length > 0)
+                            if (s.isNotEmpty())
                                 s += ", "
                             s += "audio"
                         }

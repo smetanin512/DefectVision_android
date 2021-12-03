@@ -1,4 +1,4 @@
-package com.alexvas.rtsp.demo.decode
+package com.example.hakatonapplication.decode
 
 import android.annotation.SuppressLint
 import android.media.MediaCodec
@@ -13,7 +13,8 @@ class VideoDecodeThread (
         private val mimeType: String,
         private val width: Int,
         private val height: Int,
-        private val videoFrameQueue: FrameQueue) : Thread() {
+        private val videoFrameQueue: FrameQueue
+) : Thread() {
 
     companion object {
         private val TAG: String = VideoDecodeThread::class.java.simpleName

@@ -1,16 +1,13 @@
 package com.example.hakatonapplication
 
 import android.content.ContentResolver
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.AnyRes
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hakatonapplication.databinding.FragmentNotifBinding
 import com.example.hakatonapplication.recycler.CustomRecyclerAdapter
@@ -39,20 +36,14 @@ class NotifFragment : Fragment() {
         val images = ArrayList<ImagesWithDefection>()
 
         images.add(ImagesWithDefection(getUriToDrawable(R.drawable.example)))
-        images.add(ImagesWithDefection(getUriToDrawable(R.drawable.first)))
-        images.add(ImagesWithDefection(getUriToDrawable(R.drawable.second)))
+        images.add(ImagesWithDefection(getUriToDrawable(R.drawable.example)))
+        images.add(ImagesWithDefection(getUriToDrawable(R.drawable.example)))
 
         val adapter = CustomRecyclerAdapter(images)
         recyclerView.adapter = adapter
-        adapter.onItemClick = { image ->
-            val bundle = Bundle()
-            bundle.putString("uri", image.uri.toString())
-            findNavController().navigate(R.id.nav_choice, bundle)
-            startActivity(Intent(activity, ChoiceDefection::class.java))
-        }
     }
 
-    fun getUriToDrawable(
+    private fun getUriToDrawable(
         @AnyRes drawableId: Int
     ): Uri {
         return Uri.parse(

@@ -8,7 +8,7 @@ import org.json.JSONObject
 import timber.log.Timber
 
 
-class IOSocket(gson: Gson) : BaseSocket(gson) {
+class IOSocket(gson: Gson) : BaseSocket() {
     private var mSocket: Socket? = null
     private var address: String = Constants.DEFAULT_ADDRESS
     private var path: String = Constants.PATH
@@ -29,11 +29,17 @@ class IOSocket(gson: Gson) : BaseSocket(gson) {
 
     override fun connectAndListen() {
 
-        mSocket?.on(Socket.EVENT_CONNECT, onConnect)
-        mSocket?.on(Socket.EVENT_DISCONNECT) { println(Constants.LOG_DISCONNECTED) }
-        mSocket?.connect()
+        try {
+            mSocket?.on(Socket.EVENT_CONNECT, onConnect)
+            mSocket?.on(Socket.EVENT_DISCONNECT) { println(Constants.LOG_DISCONNECTED) }
+            mSocket?.connect()
 
-        mSocket?.on(Constants.SERVER_RESPONSE, onResponse)
+            mSocket?.on(Constants.SERVER_RESPONSE, onResponse)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Timber.d(Constants.LOG_ERROR, "Failed to connect")
+        }
+
     }
 
     private var onConnect = Emitter.Listener {
@@ -92,7 +98,7 @@ class IOSocket(gson: Gson) : BaseSocket(gson) {
 
         const val DEFAULT_ADDRESS = "http://94.26.229.85:5000"
 
-        const val PATH = ""
+        const val PATH = "/socket.io"
 
         const val TIMEOUT: Long = 2000
 

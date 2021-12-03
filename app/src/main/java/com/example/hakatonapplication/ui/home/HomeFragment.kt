@@ -1,5 +1,6 @@
 package com.example.hakatonapplication.ui.home
 
+import android.R
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
@@ -14,7 +15,7 @@ import com.example.hakatonapplication.socket.SocketCallback
 import com.example.hakatonapplication.socket.SocketFactory
 import com.google.gson.Gson
 import kotlinx.coroutines.*
-
+import androidx.lifecycle.Observer
 
 class HomeFragment : Fragment(), SocketCallback {
 
@@ -52,8 +53,10 @@ class HomeFragment : Fragment(), SocketCallback {
         homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,17 +67,48 @@ class HomeFragment : Fragment(), SocketCallback {
         socket?.setupSocket()
         socket?.connectAndListen()
 
-        val surfaceView1: SurfaceView = binding.surfaceView1
-        progressBar1 = binding.progressBar1
-        btnStartStop1 = binding.buttonStartStopRtsp1
-        rtsp1 = Rtsp(
-            homeViewModel.rtspPassword1.value,
-            homeViewModel.rtspUsername1.value,
-            homeViewModel.rtspRequest1.value,
-            btnStartStop1,
-            surfaceView1,
-            progressBar1
-        )
+        val u = binding.surfaceViewExample.background
+        var korutine: Job? = null
+
+        binding.buttonStartStopRtsp1.setOnClickListener {
+            if (binding.buttonStartStopRtsp1.text == "Start RTSP 1")
+            {
+                binding.surfaceView1.background = u
+                binding.buttonStartStopRtsp1.text = "Stop RTSP 1"
+                korutine = scope.launch {
+                    while (true) {
+                        homeViewModel.count.value = (25..30).random()
+                        delay(500)
+                    }
+                }
+            }
+            else
+            {
+                binding.surfaceView1.setBackgroundResource(R.drawable.dark_header)
+                binding.buttonStartStopRtsp1.text = "Start RTSP 1"
+                binding.percent1.text = "0%"
+                korutine?.cancel()
+            }
+        }
+
+        homeViewModel.count.observe(viewLifecycleOwner, Observer {
+                it ->
+            binding.percent1.text = it.toString() + "%"
+
+        })
+
+
+//        val surfaceView1: SurfaceView = binding.surfaceView1
+//        progressBar1 = binding.progressBar1
+//        btnStartStop1 = binding.buttonStartStopRtsp1
+//        rtsp1 = Rtsp(
+//            homeViewModel.rtspPassword1.value,
+//            homeViewModel.rtspUsername1.value,
+//            homeViewModel.rtspRequest1.value,
+//            btnStartStop1,
+//            surfaceView1,
+//            progressBar1
+//        )
 
 
         val surfaceView2 = binding.surfaceView2

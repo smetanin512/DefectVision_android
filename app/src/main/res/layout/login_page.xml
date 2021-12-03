@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:background="#E90000">
+        android:background="@drawable/android23">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -16,7 +16,19 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/mainLayout"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginBottom="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:id="@+id/logoLogin"
+                android:layout_marginTop="100dp"
+                android:layout_marginStart="43dp"
+                android:layout_marginEnd="131dp"
+                android:textSize="31sp"
+                android:textColor="#20272F"/>
+
+            </RelativeLayout>
 
 
             <LinearLayout
@@ -46,14 +58,15 @@
                         android:id="@+id/enter_email_auth_enter_with_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rounded"
+                        android:layout_marginTop="100dp"
                         android:ems="10"
                         android:paddingStart="20dp"
                         android:hint="Логин"
                         android:inputType="textEmailAddress"
                         android:minHeight="48dp"
-                        android:textColor="#E90000"
-                        android:textColorHint="#E90000"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="#FFFFFF"
+                        android:textColorHint="#FFFFFF"
                         android:textSize="18sp"
                         android:layout_marginStart="36dp"
                         android:layout_marginEnd="36dp"
@@ -67,16 +80,16 @@
                         android:id="@+id/enter_password_auth_enter_with_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rounded"
                         android:paddingStart="20dp"
                         android:ems="10"
                         android:layout_marginStart="36dp"
                         android:layout_marginEnd="36dp"
                         android:hint="Пароль"
+                        android:backgroundTint="#FFFFFF"
                         android:inputType="textPassword"
                         android:minHeight="48dp"
-                        android:textColor="#E90000"
-                        android:textColorHint="#E90000"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#FFFFFF"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toTopOf="@+id/forget_password"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -90,8 +103,7 @@
                         android:textAllCaps="false"
                         android:textSize="18sp"
                         android:textColor="#E90000"
-                        android:background="@drawable/rounded"
-                        android:text="Войти"
+                        android:background="@drawable/ic_button"
                         android:layout_marginTop="40dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
